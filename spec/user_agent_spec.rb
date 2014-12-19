@@ -175,6 +175,16 @@ describe UserAgent, ".parse" do
     useragent = UserAgent.new("Mozilla", "5.0")
     expect(UserAgent.parse("Mozilla/5.0").application).to eq(useragent)
   end
+  
+  it "should parse an empty string to default" do
+    useragent = UserAgent.new("Mozilla")
+    expect(UserAgent.parse("").application).to eq(useragent)
+  end
+ 
+  it "should parse a blank string to default" do
+    useragent = UserAgent.new("Mozilla")
+    expect(UserAgent.parse(" ").application).to eq(useragent)
+  end
 
   it "should parse a single product, version, and comment" do
     useragent = UserAgent.new("Mozilla", "5.0", ["Macintosh", "U", "Intel Mac OS X 10_5_3", "en-us"])
